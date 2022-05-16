@@ -9,4 +9,4 @@ mongoose.connect("mongodb://localhost:27017/home")
 
 app.use(express.json());
 app.use("/user", userRout);
-app.listen(4500, () => { console.log("waiting") }
+app.listen(4500, () => { console.log("waiting")}) 
