@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
-const { Winings, WiningSchema } = require("../models/Wining");
+const { Wining, WiningSchema } = require("../models/Wining");
 const { User } = require("../models/user");
 const AddWining = async (req, res) => {
     try {
-        let n =new WiningSchema(req.body) ;
+        let n =new Wining(req.body) ;
         await n.save();
         return res.send(n);
     }
@@ -24,7 +24,7 @@ const GetAllUsers = async (req, res) => {
 const GetWinnerByWiningId = async (req, res) => {
     let t = req.params._winingId;
     try {
-        let n = await Winings.findById(t)
+        let n = await Wining.findById(t)
         let winner = await User.findById(n.id)
         return res.send(winner);
     }
@@ -35,7 +35,7 @@ const GetWinnerByWiningId = async (req, res) => {
 const GetWinnerByProductId = async (req, res) => {
     let t = req.params._productId;
     try {
-        let w = await Winings.find(a => { a.itemId = t })
+        let w = await Wining.find(a => { a.itemId = t })
         let winner = await User.findById(w.userId)
         return res.send(winner);
     }
