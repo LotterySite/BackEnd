@@ -3,7 +3,7 @@ const { Wining, WiningSchema } = require("../models/Wining");
 const { User } = require("../models/user");
 const AddWining = async (req, res) => {
     try {
-        let n =new Wining(req.body) ;
+        let n = new Wining(req.body);
         await n.save();
         return res.send(n);
     }
@@ -24,8 +24,7 @@ const GetAllUsers = async (req, res) => {
 const GetWinnerByWiningId = async (req, res) => {
     let t = req.params._winingId;
     try {
-        let n = await Wining.findById(t)
-        let winner = await User.findById(n.id)
+        let winner = await Wining.findById(t)
         return res.send(winner);
     }
     catch (e) {
@@ -36,8 +35,8 @@ const GetWinnerByProductId = async (req, res) => {
     let t = req.params._productId;
     try {
         let w = await Wining.find(a => { a.itemId = t })
-        let winner = await User.findById(w.userId)
-        return res.send(winner);
+        // let winner = await User.findById(w.userId)
+        return res.send(w);
     }
     catch (e) {
         return res.status(409).send(e);
