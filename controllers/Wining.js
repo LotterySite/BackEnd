@@ -42,3 +42,4 @@ const GetWinnerByProductId = async (req, res) => {
         return res.status(409).send(e);
     }
 }
+module.exports={GetAllUsers,GetWinnerByProductId,GetWinnerByWiningId,AddWining}
